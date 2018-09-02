@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<!--/*@thymesVar id="title" type="java.lang.String"*/-->
+<!--/*@thymesVar id="viewName" type="java.lang.String"*/-->
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="ResidentEvil"></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<div class="container">
+    <h2>All Logs</h2>
+    <br>
+    <hr>
+    <form class="form-inline" th:action="'/logs/all'">
+        <div class="form-group mx-sm-3">
+            <input type="text" class="form-control" id="search" placeholder="Search..." name="username">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a class="btn btn-danger pull-right" th:text="'Clear logs'" href="/logs/delete"/>
+    </form>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Operation</th>
+            <th>Modified Table</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="log : ${viewModel}" th:object="${log}">
+            <tr>
+                <td th:text="*{username}"/>
+                <td th:text="*{operation}"/>
+                <td th:text="*{modifiedTable}"/>
+                <td th:text="*{time}"/>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,22 @@
+
+<div class="container">
+    <h2 th:text="'Customer Info'"/>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Total Cars</th>
+            <th>Money Spent</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:object="${viewModel}">
+            <tr>
+                <td th:text="*{name}"/>
+                <td th:text="*{carsCount}"/>
+                <td th:text="${#numbers.formatCurrency(viewModel.totalSpent)}"/>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,36 @@
+
+<div class="container">
+    <h1 class="text-center">Sales Info</h1>
+    <hr>
+    <th:block th:if="${#session.getAttribute('user') != null}">
+        <a class="btn btn-primary col-sm-1 align-items-center" href="/sales/add" >Add Sale</a>
+    </th:block>
+    <br>
+    <th:block th:each="sale : ${viewModel}" th:object="${sale}">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Car Make</th>
+            <th>Car Model</th>
+            <th>Traveled Distance</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td th:text="*{car.make}"/>
+                <td th:text="*{car.model}"/>
+                <td th:text="*{car.traveledDistance}"/>
+            </tr>
+
+        </tbody>
+    </table>
+        <h5 th:text="'Customer name : '+ *{customerName}"></h5>
+        <h5 th:text="'Price without discount : '+ ${#numbers.formatCurrency(sale.price)}"></h5>
+        <h5 th:text="'Discount : '+ ${#numbers.formatDecimal(sale.discount,1,2)}"></h5>
+        <h5 th:text="'Price with discount : '+ ${#numbers.formatCurrency(sale.priceWithDiscount)}"></h5>
+        <br>
+        <hr>
+        <br>
+    </th:block>
+</div>

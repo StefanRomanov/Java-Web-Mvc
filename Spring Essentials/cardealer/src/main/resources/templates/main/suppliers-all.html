@@ -1,0 +1,32 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <h2 th:text="'All Suppliers'"/>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number of parts</th>
+            <th>Is importer ?</th>
+            <th:block th:if="${#session.getAttribute('user') != null}">
+                <th>Actions</th>
+            </th:block>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="supplier : ${viewModel}" th:object="${supplier}">
+            <tr>
+                <td th:text="*{id}"/>
+                <td th:text="*{name}"/>
+                <td th:text="*{numberOfParts}"/>
+                <td th:text="*{isImporter}? 'Yes' : 'No'"/>
+                <th:block th:if="${#session.getAttribute('user') != null}">
+                    <td>
+                        <a class="btn-primary" th:href="'/suppliers/edit/'+ *{id}" th:text="'Edit'"/>
+                        <a class="btn-danger" th:href="'/suppliers/delete/'+ *{id}" th:text="'Delete'"/>
+                    </td>
+                </th:block>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>

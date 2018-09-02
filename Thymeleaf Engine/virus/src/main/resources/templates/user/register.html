@@ -1,0 +1,34 @@
+<h1 class="text-center">Register !</h1>
+<br><hr><br>
+<div class="container align-content-lg-center">
+    <div class="col-lg-5 align-content-lg-center">
+        <form action="/users/register" method="post" th:object="${viewModel}">
+            <br>
+            <div class="form-group">
+                <label th:for="${#ids.next('username')}" th:text="'Username'"></label>
+                <input type="text" class="form-control" th:field="*{username}"/>
+                <p class="help-block text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"/>
+            </div>
+            <br>
+            <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'alert-danger' : ''">
+                <label th:for="${#ids.next('email')}">Email</label>
+                <input type="email" class="form-control" th:field="*{email}">
+                <p class="help-block text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+            </div>
+            <br>
+            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'alert-danger' : ''">
+                <label th:for="${#ids.next('password')}">Password</label>
+                <input type="password" class="form-control" th:field="*{password}">
+                <p class="help-block text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/>
+            </div>
+            <br>
+            <div class="form-group" th:classappend="${#fields.hasErrors('repeatPassword')}? 'alert-danger' : ''">
+                <label th:for="${#ids.next('repeatPassword')}">Confirm Password</label>
+                <input type="password" class="form-control"  th:field="*{repeatPassword}">
+                <p class="help-block text-danger" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}"/>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+</div>

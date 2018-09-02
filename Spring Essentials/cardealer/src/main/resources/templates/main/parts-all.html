@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>All Customers</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="part : ${viewModel}" th:object="${part}">
+            <tr>
+                <td th:text="*{name}"/>
+                <td th:text="${#numbers.formatCurrency(part.price)}"/>
+                <td th:text="*{quantity}"/>
+                <td th:text="*{supplier}"/>
+                <td>
+                    <a class="btn-primary" th:href="'/parts/edit/'+ *{id}" th:text="'Edit'"/>
+                    <a class="btn-danger" th:href="'/parts/delete/'+ *{id}" th:text="'Delete'"/>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<!--/*@thymesVar id="title" type="java.lang.String"*/-->
+<!--/*@thymesVar id="viewName" type="java.lang.String"*/-->
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="ResidentEvil"></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<h1 class="text-center">Edit Supplier</h1>
+<br><hr><br>
+<div class="container align-content-lg-center">
+    <div class="col-lg-5 align-content-lg-center" th:object="${viewModel}">
+        <form th:action="'/suppliers/edit/'+*{id}" method="post">
+            <br>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" th:value="*{name}">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="isimporter">Is Importer ?</label>
+                <input type="checkbox" class="form-control-lg" id="isimporter" name="isImporter" th:checked="*{isImporter}">
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">Edit</button>
+            <a class="btn btn-info" href="/suppliers/all">Back</a>
+        </form>
+    </div>
+</div>

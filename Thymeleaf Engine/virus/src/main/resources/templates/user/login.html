@@ -1,0 +1,22 @@
+<h1 class="text-center">Login !</h1>
+<br><hr><br>
+<div class="container align-content-lg-center">
+    <div class="col-lg-5 align-content-lg-center">
+        <form action="/users/login" method="post" th:object="${viewModel}">
+            <br>
+            <div class="form-group" th:classappend="${#fields.hasErrors('username')}? 'alert-danger' : ''">
+                <label th:for="${#ids.next('username')}">Username</label>
+                <input type="text" class="form-control" th:field="*{username}">
+                <p class="help-block text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"/>
+            </div>
+            <br>
+            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'alert-danger' : ''">
+                <label th:for="${#ids.next('password')}">Password</label>
+                <input type="password" class="form-control" th:field="*{password}">
+                <p class="help-block text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+</div>

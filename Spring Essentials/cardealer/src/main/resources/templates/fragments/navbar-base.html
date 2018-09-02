@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<!--/*@thymesVar id="title" type="java.lang.String"*/-->
+<!--/*@thymesVar id="viewName" type="java.lang.String"*/-->
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="ResidentEvil"></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-wine nav-virus">
+        <a class="navbar-brand text-white" href="/">Car Dealer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="/customers/all/ascending">Customers <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sales
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/sales/">All</a>
+                        <a class="dropdown-item" href="/sales/discounted">Discounted</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/cars/all">Cars</a>
+                </li>
+            </ul >
+            <ul class="navbar-nav mr-auto">
+            <th:block th:if="${#session.getAttribute('user') == null}">
+
+                <li class="nav-virus" >
+                    <a class="nav-link text-white ui-corner-right" href="/users/register">Register</a>
+                </li>
+                <li class="nav-virus" >
+                    <a class="nav-link text-white ui-corner-right" href="/users/login">Login</a>
+                </li>
+            </th:block>
+            <th:block th:if="${#session.getAttribute('user') != null}">
+                <li class="nav-virus" >
+                    <a class="nav-link text-white right" href="/users/logout">Logout</a>
+                </li>
+
+            </th:block>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main th:include="${viewName}"></main>
+</body>
+</html>

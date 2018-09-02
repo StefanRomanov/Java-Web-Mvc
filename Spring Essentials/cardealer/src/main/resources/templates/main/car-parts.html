@@ -1,0 +1,24 @@
+
+<div class="container">
+    <h2 th:text="${viewModel.getMake()}"/>
+    <h2 th:text="${viewModel.getModel()}"/>
+    <h2 th:text="${viewModel.getTraveledDistance()}"/>
+    <br>
+    <h3>Parts :</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="part : ${viewModel.getParts()}" th:object="${part}">
+            <tr>
+                <td th:text="*{name}"/>
+                <td th:text="*{price}"/>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>

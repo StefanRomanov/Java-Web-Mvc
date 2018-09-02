@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<!--/*@thymesVar id="title" type="java.lang.String"*/-->
+<!--/*@thymesVar id="viewName" type="java.lang.String"*/-->
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="ResidentEvil"></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<h1 class="text-center">Add Part</h1>
+<br><hr><br>
+<div class="container align-content-lg-center">
+    <div class="col-lg-5 align-content-lg-center">
+        <form th:action="'/parts/edit/' + ${viewModel.get(0).id}" method="post" th:object="${viewModel.get(0)}">
+            <br>
+            <div class="form-group">
+                <label for="namee">Name</label>
+                <input type="text" class="form-control" id="name" name="name" th:value="*{username}">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" step=".01" class="form-control" id="price" name="price" th:value="*{price}">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" th:value="*{quantity}">
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="supplier">Supplier</label>
+                <select id="supplier" name="supplier" th:value="*{supplier}">
+                    <th:block th:each="username : ${viewModel.get(1)}">
+                        <option class="dropdown-item" th:text="${name}" th:selected="(${name} == ${viewModel.get(0).supplier})"/>
+                    </th:block>
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary align-content-lg-center">Edit</button>
+        </form>
+    </div>
+</div>

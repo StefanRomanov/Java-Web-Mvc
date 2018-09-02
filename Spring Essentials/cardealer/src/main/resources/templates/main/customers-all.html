@@ -1,0 +1,22 @@
+
+<div class="container">
+    <h2>All Customers</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of birth</th>
+            <th>Is Young Driver ?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="customer : ${viewModel}" th:object="${customer}">
+            <tr>
+                <td th:text="*{name}"/>
+                <td th:text="${#temporals.format(customer.getBirthDate(), 'dd-MMM-yyyy')}"/>
+                <td th:text="*{isYoungDriver} ? 'Yes' : 'No'"/>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
